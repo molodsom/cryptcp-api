@@ -1,0 +1,21 @@
+#  ADD ISOLATED NETWORK BEFORE START:
+#  docker network create --driver overlay --internal isolated
+
+version: '3.8'
+
+services:
+  cryptcp-api:
+    build: .
+    volumes:
+      - ./cprocsp:/var/opt/cprocsp
+    restart: always
+    networks:
+      - isolated
+  random-service:
+    image: nginx:latest
+    networks:
+      - default
+      - isolated
+networks:
+  isolated:
+    external: true
