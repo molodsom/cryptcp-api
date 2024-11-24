@@ -41,8 +41,17 @@ The service is intended for use in secure, access-restricted infrastructures.
   ```
 - **Upload a Container**:
   ```bash
-  curl -X POST -F "file=@path/to/container.000.zip" http://<host>:<port>/upload-container
+  curl -X POST -F "file=@path/to/container.zip" http://<host>:<port>/upload-container
   ```
+- **Expected `.zip` file structure:**
+    ```text
+    container.zip
+    ├── 12345678.000/
+    │   ├── header.key
+    │   ├── masks.key
+    │   ├── name.key
+    │   ├── primary.key
+    ```
 
 ## License
 This project uses cryptcp, which requires a valid license key or trial mode.
